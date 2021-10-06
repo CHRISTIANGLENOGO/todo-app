@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="shortcut icon" type="image/png" href="images/favicon-32x32.png">
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="todo">todo</h1>
+            <div class="toggle">
+                <div class="moon"><img src="images/icon-moon.svg" alt="icon moon"></div>
+                <div class="sun"><img src="images/icon-sun.svg" alt="icon sun"></div>
+            </div>
+        </div>
+    </div>
+    <form>
+        <div class="todoInput">
+            <div class="circle"></div>
+            <input type="text" placeholder="Create a new todo.." id="todos">
+        </div>
+        <div class="container-list">
+            <ul class="list">
+
+            </ul>
+            <div>
+                <span class="itemLeft"></span>
+                <span class="clear"></span>
+            </div>
+        </div>
+    </form>
+    <div class="todoStatus">
+        <p class="all">All</p>
+        <p class="active">Active</p>
+        <p class="complete">Completed</p>
+    </div>
+    <div class="drag">Drag and drop to reorder list</div>
+
+    <script src="app.js"></script>
+</body>
+</html>
