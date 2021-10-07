@@ -3,6 +3,7 @@ const circleBtn = document.querySelector(".circle");
 const list = document.querySelector(".list");
 const check = document.querySelector(".todoCheck");
 const countItem = document.querySelector(".itemLeft");
+const todoStatus = document.querySelectorAll(".status");
 
 circleBtn.addEventListener('click', () => {
     addTodo();
@@ -42,7 +43,15 @@ function checking(event) {
     const checkList = event.target;
     if(checkList.classList[0] === 'todoCheck'){
         checkList.style.background = "linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%)";
+        checkList.innerHtml = "<img src=\"images/icon-check.svg\" alt=\"check icon\">";
         checkList.nextSibling.style.textDecoration = "line-through";
+        checkList.parentNode.classList.add('completed');
+        const arrayVal = checkList.nextSibling.innerText;
+        if(arrayList.includes(arrayVal)){
+            const indexNum = arrayList.indexOf(arrayVal);
+            arrayList.splice(indexNum, 1);
+            countItems();
+        }
     }
     if(checkList.classList[0] === 'cross'){
         checkList.parentNode.remove();
@@ -61,5 +70,29 @@ function countItems() {
         countItem.innerText = `${count} items left`;
     }else {
         countItem.innerText = `${count} item left`;
+    }
+}
+
+todoStatus.forEach(element => {
+    element.addEventListener('click', () => {
+        filter(element.innerText);
+    });
+});
+
+function filter(btn) {
+    switch(btn){
+        case 'All':
+            console.log("hello fucking idiot");
+            break;
+        case 'Active':
+            if(list.childNodes.classList === 'Completed'){
+
+            }
+            break;
+        case 'Completed':
+            console.log("hello");
+            break;
+        default:
+            return;
     }
 }
