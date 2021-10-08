@@ -3,7 +3,9 @@ const circleBtn = document.querySelector(".circle");
 const list = document.querySelector(".list");
 const check = document.querySelector(".todoCheck");
 const countItem = document.querySelector(".itemLeft");
+const clearCompleted = document.querySelector(".clear");
 const todoStatus = document.querySelectorAll(".status");
+const statusContainer = document.querySelector(".todoStatus");
 
 circleBtn.addEventListener('click', () => {
     addTodo();
@@ -14,6 +16,20 @@ circleBtn.addEventListener('click', () => {
 list.addEventListener('click', () => {
     checking(event);
 });
+
+clearCompleted.addEventListener('click', () => {
+    // const complete = list.childNodes.classList.contains("completed");
+    // complete.remove();
+    clear();
+});
+
+function clear(){
+    for(let i = 0; i < list.children.length; i++){
+        if(list.children[i].classList.contains("completed")){
+            list.children[i].remove();
+        }
+    }
+}
 
 let arrayList = [];
 
@@ -43,7 +59,7 @@ function checking(event) {
     const checkList = event.target;
     if(checkList.classList[0] === 'todoCheck'){
         checkList.style.background = "linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%)";
-        checkList.innerHtml = "<img src=\"images/icon-check.svg\" alt=\"check icon\">";
+        checkList.innerHtml = "<img src=\"images/icon-check.svg\" alt=\"check icon\"/>";
         checkList.nextSibling.style.textDecoration = "line-through";
         checkList.parentNode.classList.add('completed');
         const arrayVal = checkList.nextSibling.innerText;
@@ -74,25 +90,36 @@ function countItems() {
 }
 
 todoStatus.forEach(element => {
-    element.addEventListener('click', () => {
+    element.addEventListener('click', () => { 
         filter(element.innerText);
     });
 });
 
 function filter(btn) {
+    const lists = list.children.length;
     switch(btn){
         case 'All':
-            console.log("hello fucking idiot");
+            for(let i = 0; i < lists; i++){
+                list.children[i].style.display = "flex";
+            }
             break;
         case 'Active':
-            if(list.childNodes.classList === 'Completed'){
-
+            for(let i = 0; i < lists; i++){
+                if(!list.children[i].classList.contains("completed")){
+                    list.children[i].style.display = "flex";
+                }else {
+                    list.children[i].style.display = "none";
+                }
             }
             break;
         case 'Completed':
-            console.log("hello");
+            for(let i = 0; i < lists; i++){
+                if(list.children[i].classList.contains("completed")){
+                    list.children[i].style.display = "flex";
+                }else {
+                    list.children[i].style.display = "none";
+                }
+            }
             break;
-        default:
-            return;
     }
 }

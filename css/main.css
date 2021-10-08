@@ -115,6 +115,20 @@ body {
   height: 2rem;
 }
 
+.container-list .counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  width: 100%;
+  padding: 1rem;
+  color: #777a92;
+}
+
+.container-list .counter .clear {
+  cursor: pointer;
+}
+
 .todoStatus {
   display: flex;
   justify-content: center;
@@ -126,12 +140,16 @@ body {
   margin: 1rem auto auto auto;
 }
 
-.todoStatus p {
+.todoStatus .status {
   padding: 0.5rem;
   color: #777a92;
   font-size: 1rem;
   font-weight: 400;
   cursor: pointer;
+}
+
+.todoStatus .active {
+  color: #3a7bfd;
 }
 
 .drag {

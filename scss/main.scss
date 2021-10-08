@@ -137,6 +137,20 @@ body {
       height: 2rem;
     }
   }
+
+  .counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+    width: 100%;
+    padding: 1rem;
+    color: $DGrayishBlue;
+
+    .clear {
+      cursor: pointer;
+    }
+  }
 }
 
 .todoStatus {
@@ -149,12 +163,16 @@ body {
   border-radius: 5px;
   margin: 1rem auto auto auto;
 
-  p {
+  .status {
     padding: 0.5rem;
     color: $DGrayishBlue;
     font-size: 1rem;
     font-weight: 400;
     cursor: pointer;
+  }
+
+  .active {
+    color: $BrightBlue;
   }
 }
 
