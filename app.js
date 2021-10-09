@@ -18,18 +18,14 @@ list.addEventListener('click', () => {
 });
 
 clearCompleted.addEventListener('click', () => {
-    // const complete = list.childNodes.classList.contains("completed");
-    // complete.remove();
     clear();
 });
 
-function clear(){
-    for(let i = 0; i < list.children.length; i++){
-        if(list.children[i].classList.contains("completed")){
-            list.children[i].remove();
-        }
-    }
-}
+todoStatus.forEach(element => {
+    element.addEventListener('click', () => { 
+        filter(element.innerText);
+    });
+});
 
 let arrayList = [];
 
@@ -89,11 +85,13 @@ function countItems() {
     }
 }
 
-todoStatus.forEach(element => {
-    element.addEventListener('click', () => { 
-        filter(element.innerText);
-    });
-});
+function clear(){
+    for(let i = 0; i < list.children.length; i++){
+        if(list.children[i].classList.contains("completed")){
+            list.children[i].remove();
+        }
+    }
+}
 
 function filter(btn) {
     const lists = list.children.length;
@@ -102,6 +100,9 @@ function filter(btn) {
             for(let i = 0; i < lists; i++){
                 list.children[i].style.display = "flex";
             }
+            statusContainer.children[0].classList.add("active");
+            statusContainer.children[1].classList.remove('active');
+            statusContainer.children[2].classList.remove('active');
             break;
         case 'Active':
             for(let i = 0; i < lists; i++){
@@ -111,6 +112,9 @@ function filter(btn) {
                     list.children[i].style.display = "none";
                 }
             }
+            statusContainer.children[0].classList.remove("active");
+            statusContainer.children[1].classList.add('active');
+            statusContainer.children[2].classList.remove('active');
             break;
         case 'Completed':
             for(let i = 0; i < lists; i++){
@@ -120,6 +124,9 @@ function filter(btn) {
                     list.children[i].style.display = "none";
                 }
             }
+            statusContainer.children[0].classList.remove("active");
+            statusContainer.children[1].classList.remove('active');
+            statusContainer.children[2].classList.add('active');
             break;
     }
 }
