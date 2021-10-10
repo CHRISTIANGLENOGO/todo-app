@@ -33,7 +33,7 @@ body {
   font-weight: 400;
   font-size: 18px;
   min-height: 100vh;
-  background: url("/images/bg-mobile-light.jpg") no-repeat;
+  background: url("/images/bg-mobile-light.jpg") no-repeat top center;
   background-color: $VLGrayishBlue;
 }
 
@@ -62,7 +62,7 @@ body {
       }
 
       .sun {
-        position: absolute;
+        position: relative;
         display: none;
       }
     }

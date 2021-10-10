@@ -9,7 +9,7 @@ body {
   font-weight: 400;
   font-size: 18px;
   min-height: 100vh;
-  background: url("/images/bg-mobile-light.jpg") no-repeat;
+  background: url("/images/bg-mobile-light.jpg") no-repeat top center;
   background-color: #e4e5f1;
 }
 
@@ -41,7 +41,7 @@ body {
 }
 
 .container .header .toggle .sun {
-  position: absolute;
+  position: relative;
   display: none;
 }
 

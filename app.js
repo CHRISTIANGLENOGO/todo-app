@@ -1,12 +1,15 @@
 const todo = document.querySelector("#todos");
 const circleBtn = document.querySelector(".circle");
 const list = document.querySelector(".list");
-const check = document.querySelector(".todoCheck");
 const countItem = document.querySelector(".itemLeft");
 const clearCompleted = document.querySelector(".clear");
 const todoStatus = document.querySelectorAll(".status");
 const statusContainer = document.querySelector(".todoStatus");
+//Toggle menu
+const sun = document.querySelector(".sun");
+const moon = document.querySelector(".moon");
 
+//Eventlistener
 circleBtn.addEventListener('click', () => {
     addTodo();
     countItems();
@@ -23,12 +26,21 @@ clearCompleted.addEventListener('click', () => {
 
 todoStatus.forEach(element => {
     element.addEventListener('click', () => { 
-        filter(element.innerText);
+        filter(element.innerText);x
     });
+});
+
+sun.addEventListener('click', () => {
+    toggleThemeSun();
+});
+
+moon.addEventListener('click', () => {
+    toggleThemeMoon();
 });
 
 let arrayList = [];
 
+//FUnctions
 function addTodo() {
     if(todo.value === '') return
     //create div
@@ -129,4 +141,20 @@ function filter(btn) {
             statusContainer.children[2].classList.add('active');
             break;
     }
+}
+
+function toggleThemeSun(){
+    sun.style.display = "none";
+    moon.style.display = "flex";
+
+    //Change Background to light
+    document.body.style.background = "url(\"images/bg-mobile-light.jpg\") no-repeat";
+}
+
+function toggleThemeMoon(){
+    moon.style.display = "none";
+    sun.style.display = "flex";
+
+    //Change Background to dark
+    document.body.style.background = "url(\"images/bg-mobile-dark.jpg\") no-repeat";
 }
