@@ -6,43 +6,35 @@ const clearCompleted = document.querySelector(".clear");
 const todoStatus = document.querySelectorAll(".status");
 const statusContainer = document.querySelector(".todoStatus");
 //Toggle menu
+const toggleBtn = document.querySelector(".toggle");
 const sun = document.querySelector(".sun");
 const moon = document.querySelector(".moon");
+//Background Images
+const light = document.querySelector(".light");
+const dark = document.querySelector(".dark");
 
 //Eventlistener
 circleBtn.addEventListener('click', () => {
     addTodo();
     countItems();
-    todo.value = '';
 });
 
-list.addEventListener('click', () => {
-    checking(event);
-});
-
-clearCompleted.addEventListener('click', () => {
-    clear();
-});
+list.addEventListener('click', checking);
+clearCompleted.addEventListener('click', clear);
+toggleBtn.addEventListener('click', toggleMenu);
 
 todoStatus.forEach(element => {
-    element.addEventListener('click', () => { 
-        filter(element.innerText);x
+    element.addEventListener('click', () => {
+        filter(element.innerText);
     });
-});
-
-sun.addEventListener('click', () => {
-    toggleThemeSun();
-});
-
-moon.addEventListener('click', () => {
-    toggleThemeMoon();
 });
 
 let arrayList = [];
 
-//FUnctions
+//Functions
+//Add todo list 
 function addTodo() {
-    if(todo.value === '') return
+    if (todo.value === '') return
     //create div
     const addDiv = document.createElement("div");
     addDiv.classList.add("todoDiv");
@@ -60,27 +52,30 @@ function addTodo() {
     addCross.classList.add("cross");
     addDiv.appendChild(addCross);
     list.appendChild(addDiv);
+    //Array list for todo item
     arrayList.unshift(addli.innerText);
+    //Clear Input Field
+    todo.value = '';
 }
 
+//Check the complete todo and Delete todo
 function checking(event) {
     const checkList = event.target;
-    if(checkList.classList[0] === 'todoCheck'){
+    if (checkList.classList[0] === 'todoCheck') {
         checkList.style.background = "linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%)";
-        checkList.innerHtml = "<img src=\"images/icon-check.svg\" alt=\"check icon\"/>";
         checkList.nextSibling.style.textDecoration = "line-through";
         checkList.parentNode.classList.add('completed');
         const arrayVal = checkList.nextSibling.innerText;
-        if(arrayList.includes(arrayVal)){
+        if (arrayList.includes(arrayVal)) {
             const indexNum = arrayList.indexOf(arrayVal);
             arrayList.splice(indexNum, 1);
             countItems();
         }
     }
-    if(checkList.classList[0] === 'cross'){
+    if (checkList.classList[0] === 'cross') {
         checkList.parentNode.remove();
         const arrayVal = checkList.previousSibling.innerText;
-        if(arrayList.includes(arrayVal)){
+        if (arrayList.includes(arrayVal)) {
             const indexNum = arrayList.indexOf(arrayVal);
             arrayList.splice(indexNum, 1);
             countItems();
@@ -88,28 +83,31 @@ function checking(event) {
     }
 }
 
+//Count The todo list item
 function countItems() {
     let count = arrayList.length;
-    if(count > 1) {
+    if (count > 1) {
         countItem.innerText = `${count} items left`;
-    }else {
+    } else {
         countItem.innerText = `${count} item left`;
     }
 }
 
-function clear(){
-    for(let i = 0; i < list.children.length; i++){
-        if(list.children[i].classList.contains("completed")){
+//Clear all Completed todo
+function clear() {
+    for (let i = 0; i < list.children.length; i++) {
+        if (list.children[i].classList.contains("completed")) {
             list.children[i].remove();
         }
     }
 }
 
+//Filtering Todo Status
 function filter(btn) {
     const lists = list.children.length;
-    switch(btn){
+    switch (btn) {
         case 'All':
-            for(let i = 0; i < lists; i++){
+            for (let i = 0; i < lists; i++) {
                 list.children[i].style.display = "flex";
             }
             statusContainer.children[0].classList.add("active");
@@ -117,10 +115,10 @@ function filter(btn) {
             statusContainer.children[2].classList.remove('active');
             break;
         case 'Active':
-            for(let i = 0; i < lists; i++){
-                if(!list.children[i].classList.contains("completed")){
+            for (let i = 0; i < lists; i++) {
+                if (!list.children[i].classList.contains("completed")) {
                     list.children[i].style.display = "flex";
-                }else {
+                } else {
                     list.children[i].style.display = "none";
                 }
             }
@@ -129,10 +127,10 @@ function filter(btn) {
             statusContainer.children[2].classList.remove('active');
             break;
         case 'Completed':
-            for(let i = 0; i < lists; i++){
-                if(list.children[i].classList.contains("completed")){
+            for (let i = 0; i < lists; i++) {
+                if (list.children[i].classList.contains("completed")) {
                     list.children[i].style.display = "flex";
-                }else {
+                } else {
                     list.children[i].style.display = "none";
                 }
             }
@@ -143,18 +141,47 @@ function filter(btn) {
     }
 }
 
-function toggleThemeSun(){
-    sun.style.display = "none";
-    moon.style.display = "flex";
+function toggleMenu(e) {
+    const theme = e.target;
 
-    //Change Background to light
-    document.body.style.background = "url(\"images/bg-mobile-light.jpg\") no-repeat";
-}
+    const todoInput = document.querySelector(".todoInput");
+    const counter = document.querySelector(".counter");
 
-function toggleThemeMoon(){
-    moon.style.display = "none";
-    sun.style.display = "flex";
+    if(theme.parentNode.classList[0] === "sun"){
+        //Change Toggle Icon
+        moon.style.display = "flex";
+        sun.style.display = "none";
 
-    //Change Background to dark
-    document.body.style.background = "url(\"images/bg-mobile-dark.jpg\") no-repeat";
+        //Change backgroung Image to light
+        light.style.display = "flex";
+        dark.style.display = "none";
+
+        //Change background color to Light
+        document.body.style.background = "hsl(236, 33%, 92%)";
+        todoInput.style.background = "hsl(0, 0%, 98%)";
+        todo.style.background = "hsl(0, 0%, 98%)";
+        list.style.background = "hsl(0, 0%, 98%)";
+        counter.style.background = "hsl(0, 0%, 98%)";
+        statusContainer.style.background = "hsl(0, 0%, 98%)";
+
+    }else {
+        //Change toggle Icon
+        moon.style.display = "none";
+        sun.style.display = "flex";
+
+        //Change Backgroung Image to dark
+        light.style.display = "none";
+        dark.style.display = "flex";
+
+        //Change background color to Dark
+        document.body.style.background = "hsl(235, 21%, 11%)";
+        todoInput.style.background = "hsl(235, 24%, 19%)";
+        todo.style.background = "hsl(235, 24%, 19%)";
+        list.style.background = "hsl(235, 24%, 19%)";
+        counter.style.background = "hsl(235, 24%, 19%)";
+        statusContainer.style.background = "hsl(235, 24%, 19%)";
+        
+        //add classlist
+        list.classList.add()
+    }
 }

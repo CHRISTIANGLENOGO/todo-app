@@ -9,17 +9,50 @@ body {
   font-weight: 400;
   font-size: 18px;
   min-height: 100vh;
-  background: url("/images/bg-mobile-light.jpg") no-repeat top center;
   background-color: #e4e5f1;
+  transition: all 0.5s linear;
+}
+
+.images-container {
+  display: flex;
+  position: relative;
+  width: 100%;
+  min-height: 30vh;
+}
+
+.images-container .light {
+  position: relative;
+}
+
+.images-container .light img {
+  width: 100vw;
+  height: auto;
+}
+
+.images-container .dark {
+  position: absolute;
+  display: none;
+}
+
+.images-container .dark img {
+  width: 100vw;
+  height: auto;
 }
 
 .container {
   width: 350px;
   margin: auto;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
 }
 
 .container .header {
   display: flex;
+  position: relative;
+  z-index: 1;
   justify-content: space-between;
   align-items: center;
   margin: 2rem 0;
@@ -34,6 +67,7 @@ body {
 .container .header .toggle {
   display: flex;
   position: relative;
+  border: 3px solid #777a92;
 }
 
 .container .header .toggle .moon {

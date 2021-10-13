@@ -12,6 +12,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="images-container">
+        <picture class="light">
+            <source media="(max-width: 500px)" srcset="images/bg-mobile-light.jpg">
+            <img src="images/bg-desktop-light.jpg" alt="light">
+        </picture>
+        <picture class="dark">
+            <source media="(max-width: 500px)" srcset="images/bg-mobile-dark.jpg">
+            <img src="images/bg-desktop-dark.jpg" alt="dark">
+        </picture>
+    </div>
     <div class="container">
         <div class="header">
             <h1 class="todo">todo</h1>
@@ -20,28 +30,28 @@
                 <div class="sun"><img src="images/icon-sun.svg" alt="icon sun"></div>
             </div>
         </div>
-    </div>
-    <form>
-        <div class="todoInput">
-            <div class="circle"></div>
-            <input type="text" placeholder="Create a new todo.." id="todos">
-        </div>
-        <div class="container-list">
-            <ul class="list">
-
-            </ul>
-            <div class="counter">
-                <span class="itemLeft"></span>
-                <span class="clear">Clear Completed</span>
+        <form>
+            <div class="todoInput">
+                <div class="circle"></div>
+                <input type="text" placeholder="Create a new todo.." id="todos">
             </div>
+            <div class="container-list">
+                <ul class="list">
+    
+                </ul>
+                <div class="counter">
+                    <span class="itemLeft">0 item left</span>
+                    <span class="clear">Clear Completed</span>
+                </div>
+            </div>
+        </form>
+        <div class="todoStatus">
+            <p class="status active">All</p>
+            <p class="status">Active</p>
+            <p class="status">Completed</p>
         </div>
-    </form>
-    <div class="todoStatus">
-        <p class="status active">All</p>
-        <p class="status">Active</p>
-        <p class="status">Completed</p>
+        <div class="drag">Drag and drop to reorder list</div>
     </div>
-    <div class="drag">Drag and drop to reorder list</div>
 
     <script src="app.js"></script>
 </body>
