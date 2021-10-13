@@ -143,7 +143,7 @@ body {
 }
 
 .container-list .todoDiv .cross {
-  background: url("/images/icon-cross.svg") no-repeat center;
+  background: url("images/icon-cross.svg") no-repeat center;
   margin: 0 1rem;
   width: 1rem;
   height: 2rem;
