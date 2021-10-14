@@ -62,7 +62,7 @@ function addTodo() {
 function checking(event) {
     const checkList = event.target;
     if (checkList.classList[0] === 'todoCheck') {
-        checkList.style.background = "linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%)";
+        checkList.style.background = "hsl(280, 87%, 65%) url(\"/images/icon-check.svg\") no-repeat center";
         checkList.nextSibling.style.textDecoration = "line-through";
         checkList.parentNode.classList.add('completed');
         const arrayVal = checkList.nextSibling.innerText;
