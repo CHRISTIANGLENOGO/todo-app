@@ -62,12 +62,12 @@ body {
 .container .header .todo {
   text-transform: uppercase;
   color: #fafafa;
+  letter-spacing: 1rem;
 }
 
 .container .header .toggle {
   display: flex;
   position: relative;
-  border: 3px solid #777a92;
 }
 
 .container .header .toggle .moon {
@@ -221,6 +221,9 @@ body {
   .todoInput input {
     font-size: 1.5rem;
   }
+  .container-list {
+    border-radius: 5px 5px 0 0;
+  }
   .container-list .todoDiv {
     height: 4rem;
   }
@@ -235,10 +238,8 @@ body {
     display: none;
   }
   .todoStatus {
-    height: 4rem;
+    height: 3.5rem;
     margin: 0;
-  }
-  .todoStatus .status {
-    font-size: 1.5rem;
+    border-radius: 0 0 5px 5px;
   }
 }
