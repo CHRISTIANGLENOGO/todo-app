@@ -137,9 +137,8 @@ body {
 }
 
 .container-list .todoDiv .complete {
-  background: linear-gradient(to right, #57ddff, #c058f3) url("/images/icon-check.svg") no-repeat center;
+  background: #c058f3 url("/images/icon-check.svg") no-repeat center;
   background-blend-mode: lighten;
-  text-decoration: line-through;
 }
 
 .container-list .todoDiv .todoLi {
@@ -148,7 +147,7 @@ body {
   flex: 1;
 }
 
-.container-list .todoDiv .todoLi .complete {
+.container-list .todoDiv .todoLiComplete {
   text-decoration: line-through;
 }
 
@@ -173,7 +172,7 @@ body {
   cursor: pointer;
 }
 
-.todoStatus {
+.statusBar {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -184,7 +183,16 @@ body {
   margin: 1rem auto auto auto;
 }
 
-.todoStatus .status {
+.statusBar .desktop {
+  display: none;
+  color: #777a92;
+}
+
+.statusBar .todoStatus {
+  display: flex;
+}
+
+.statusBar .status {
   padding: 0.5rem;
   color: #777a92;
   font-size: 1rem;
@@ -192,7 +200,7 @@ body {
   cursor: pointer;
 }
 
-.todoStatus .active {
+.statusBar .active {
   color: #3a7bfd;
 }
 
@@ -208,9 +216,10 @@ footer {
   display: flex;
   font-size: 0.8rem;
   position: absolute;
-  bottom: 1rem;
+  bottom: -3rem;
   left: 50%;
   transform: translateX(-50%);
+  width: 100%;
 }
 
 @media screen and (max-width: 350px) {
@@ -256,9 +265,14 @@ footer {
   .container-list .counter {
     display: none;
   }
-  .todoStatus {
+  .statusBar {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 0.5rem;
     height: 3.5rem;
-    margin: 0;
-    border-radius: 0 0 5px 5px;
+  }
+  .statusBar .desktop {
+    display: flex;
   }
 }

@@ -63,19 +63,22 @@ function checking(event) {
     const checkList = event.target;
     if (checkList.classList[0] === 'todoCheck') {
         //To create a check mark once completed
-        // checkList.style.background = "linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%) url(\"/todo-app/images/icon-check.svg\") no-repeat center";
-        // checkList.nextSibling.style.textDecoration = "line-through";
-        checkList.parentNode.classList.add('completed');
+        checkList.parentNode.classList.toggle("completed");
         checkList.classList.toggle("complete");
-       
+        checkList.nextSibling.classList.toggle("todoLiComplete");
+
         //To check the Todo Item which is listed in the array then delete the item from the active list
-        const arrayVal = checkList.nextSibling.innerText;
-        if (arrayList.includes(arrayVal)) {
+        const arrayVal = checkList.nextSibling.innerText; 
+        if(checkList.classList.contains("complete")){
             const indexNum = arrayList.indexOf(arrayVal);
             arrayList.splice(indexNum, 1);
             countItems();
-        }
+        }else {
+            arrayList.unshift(arrayVal);
+            countItems();
+        }      
     }
+
     if (checkList.classList[0] === 'cross') {
         //Delete the todoDiv and update the countitems
         checkList.parentNode.remove();
@@ -93,8 +96,10 @@ function countItems() {
     let count = arrayList.length;
     if (count > 1) {
         countItem.innerText = `${count} items left`;
+        desktop(countItem);
     } else {
         countItem.innerText = `${count} item left`;
+        desktop(countItem);
     }
 }
 
@@ -185,8 +190,15 @@ function toggleMenu(e) {
         list.style.background = "hsl(235, 24%, 19%)";
         counter.style.background = "hsl(235, 24%, 19%)";
         statusContainer.style.background = "hsl(235, 24%, 19%)";
-        
-        //add classlist
-        list.classList.add()
     }
 }
+
+//For desktop
+const desktopItem = document.querySelector('.Item');
+const desktopClear = document.querySelector(".Clear");
+
+function desktop(countItem){
+    desktopItem.innerText = countItem.innerText;
+}
+
+desktopClear.addEventListener('click', clear);
