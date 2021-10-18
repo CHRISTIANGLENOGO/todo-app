@@ -159,8 +159,8 @@ body {
     }
 
     .complete {
-      background: hsl(280, 87%, 65%) url("/images/icon-check.svg") no-repeat
-        center;
+      background: hsl(280, 87%, 65%) url("/todo-app/images/icon-check.svg")
+        no-repeat center;
       background-blend-mode: lighten;
     }
 
