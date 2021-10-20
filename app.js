@@ -4,7 +4,8 @@ const list = document.querySelector(".list");
 const countItem = document.querySelector(".itemLeft");
 const clearCompleted = document.querySelector(".clear");
 const todoStatus = document.querySelectorAll(".status");
-const statusContainer = document.querySelector(".todoStatus");
+const activeStatus = document.querySelector(".todoStatus");
+const statusContainer = document.querySelector(".statusBar");
 //Toggle menu
 const toggleBtn = document.querySelector(".toggle");
 const sun = document.querySelector(".sun");
@@ -120,9 +121,9 @@ function filter(btn) {
             for (let i = 0; i < lists; i++) {
                 list.children[i].style.display = "flex";
             }
-            statusContainer.children[0].classList.add("active");
-            statusContainer.children[1].classList.remove('active');
-            statusContainer.children[2].classList.remove('active');
+            activeStatus.children[0].classList.add("active");
+            activeStatus.children[1].classList.remove('active');
+            activeStatus.children[2].classList.remove('active');
             break;
         case 'Active':
             for (let i = 0; i < lists; i++) {
@@ -132,9 +133,9 @@ function filter(btn) {
                     list.children[i].style.display = "none";
                 }
             }
-            statusContainer.children[0].classList.remove("active");
-            statusContainer.children[1].classList.add('active');
-            statusContainer.children[2].classList.remove('active');
+            activeStatus.children[0].classList.remove("active");
+            activeStatus.children[1].classList.add('active');
+            activeStatus.children[2].classList.remove('active');
             break;
         case 'Completed':
             for (let i = 0; i < lists; i++) {
@@ -144,9 +145,9 @@ function filter(btn) {
                     list.children[i].style.display = "none";
                 }
             }
-            statusContainer.children[0].classList.remove("active");
-            statusContainer.children[1].classList.remove('active');
-            statusContainer.children[2].classList.add('active');
+            activeStatus.children[0].classList.remove("active");
+            activeStatus.children[1].classList.remove('active');
+            activeStatus.children[2].classList.add('active');
             break;
     }
 }
@@ -185,6 +186,7 @@ function toggleMenu(e) {
 
         //Change background color to Dark
         document.body.style.background = "hsl(235, 21%, 11%)";
+        document.body.style.color = ""
         todoInput.style.background = "hsl(235, 24%, 19%)";
         todo.style.background = "hsl(235, 24%, 19%)";
         list.style.background = "hsl(235, 24%, 19%)";

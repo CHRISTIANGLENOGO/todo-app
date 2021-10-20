@@ -151,11 +151,16 @@ body {
     align-items: center;
 
     .todoCheck {
+      cursor: pointer;
       width: 1.25rem;
       height: 1.25rem;
       border-radius: 50%;
       border: 1px solid $LGrayishBlue;
       margin: 0 1rem;
+    }
+
+    .todoCheck:hover {
+      border: 1px solid $CheckBackground;
     }
 
     .complete {
@@ -175,10 +180,14 @@ body {
     }
 
     .cross {
-      background: url("/todo-app/images/icon-cross.svg") no-repeat center;
+      cursor: pointer;
       margin: 0 1rem;
       width: 1rem;
       height: 2rem;
+    }
+
+    .cross:hover {
+      background: url("/todo-app/images/icon-cross.svg") no-repeat center;
     }
   }
 
@@ -238,13 +247,11 @@ body {
 }
 
 footer {
-  display: flex;
-  font-size: 0.8rem;
-  position: absolute;
-  bottom: -3rem;
-  left: 50%;
-  transform: translateX(-50%);
+  font-size: 1rem;
+  position: relative;
+  text-align: center;
   width: 100%;
+  bottom: -3rem;
 }
 
 @media screen and (max-width: 350px) {
@@ -279,7 +286,8 @@ footer {
   }
 
   .container-list {
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px;
+
     .todoDiv {
       height: 4rem;
 
@@ -295,6 +303,10 @@ footer {
 
     .counter {
       display: none;
+    }
+
+    .todoDiv:last-child {
+      border-bottom: none;
     }
   }
 

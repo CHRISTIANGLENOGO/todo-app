@@ -129,11 +129,16 @@ body {
 }
 
 .container-list .todoDiv .todoCheck {
+  cursor: pointer;
   width: 1.25rem;
   height: 1.25rem;
   border-radius: 50%;
   border: 1px solid #cacde8;
   margin: 0 1rem;
+}
+
+.container-list .todoDiv .todoCheck:hover {
+  border: 2px solid linear-gradient(to right, #57ddff, #c058f3);
 }
 
 .container-list .todoDiv .complete {
@@ -152,10 +157,14 @@ body {
 }
 
 .container-list .todoDiv .cross {
-  background: url("/todo-app/images/icon-cross.svg") no-repeat center;
+  cursor: pointer;
   margin: 0 1rem;
   width: 1rem;
   height: 2rem;
+}
+
+.container-list .todoDiv .cross:hover {
+  background: url("/todo-app/images/icon-cross.svg") no-repeat center;
 }
 
 .container-list .counter {
@@ -213,13 +222,11 @@ body {
 }
 
 footer {
-  display: flex;
-  font-size: 0.8rem;
-  position: absolute;
-  bottom: -3rem;
-  left: 50%;
-  transform: translateX(-50%);
+  font-size: 1rem;
+  position: relative;
+  text-align: center;
   width: 100%;
+  bottom: -3rem;
 }
 
 @media screen and (max-width: 350px) {
@@ -250,7 +257,7 @@ footer {
     font-size: 1.5rem;
   }
   .container-list {
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px;
   }
   .container-list .todoDiv {
     height: 4rem;
@@ -264,6 +271,9 @@ footer {
   }
   .container-list .counter {
     display: none;
+  }
+  .container-list .todoDiv:last-child {
+    border-bottom: none;
   }
   .statusBar {
     display: flex;
